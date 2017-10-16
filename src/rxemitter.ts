@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/observer';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/take';
@@ -35,10 +36,13 @@ export class RxEmitter {
     static emit<T>(eventName: string, ...rest: T[]): string {
         this.createChache<T>(eventName);
 
-        if (rest.length == 1)
-            this.cache[eventName].subject.next(rest[0]);
-        else
-            this.cache[eventName].subject.next(rest);
+        const value = (rest.length === 1) ? rest[0] : rest;
+
+        if (this.cache[eventName].subject.observers.length === 0) {
+            this.cache[eventName].subject = new BehaviorSubject(value);
+        } else {
+            this.cache[eventName].subject.next(value);
+        }
 
         return this.cache[eventName].target;
     }
@@ -121,9 +125,6 @@ export class RxEmitter {
             this.cache[eventName].id = guid();
             this.cache[eventName].targets = [];
             this.cache[eventName].eventName = eventName;
-        }
-
-        if (!this.cache[eventName].subject) {
             this.cache[eventName].subject = new Subject();
         }
 

@@ -7,7 +7,7 @@
     "test": "npm run mocha -- test/*.ts",
     "test:w": "npm run mocha -- --watch-extensions ts --watch test/**/*.ts src/**/*.ts",
     "mocha": "ts-node -F node_modules/mocha/bin/_mocha",
-    "test:debug": "inspect node_modules/ts-node/dist/_bin.js -F \"node_modules/mocha/bin/_mocha\" \"test/*.ts\"",
+    "test:debug": "inspect node_modules/ts-node/dist/_bin.js -F \"node_modules/mocha/bin/_mocha\" \"--no-timeouts\" \"debug\" \"test/*.ts\"",
     "tslint": "tslint -c tslint.json 'src/*.ts'",
     "compile_cjs": "tsc ./src/index.ts -m commonjs --outDir ./dist/cjs --lib es5,es2015.iterable,es2015.collection,es2015.promise,dom --sourceMap --target ES5 -d --diagnostics --pretty --noImplicitAny --noImplicitReturns --noImplicitThis --suppressImplicitAnyIndexErrors --moduleResolution node",
     "compile_es6": "tsc ./src/index.ts -m es2015 --sourceMap --outDir ./dist/es6 --target ES5 -d --diagnostics --pretty --noImplicitAny --noImplicitReturns --noImplicitThis --suppressImplicitAnyIndexErrors --moduleResolution node --noEmitHelpers --lib es5,es2015.iterable,es2015.collection,es2015.promise,dom ",

@@ -79,19 +79,28 @@ it('rx subscribe', () => {
 	assert.deepStrictEqual(numbers, [10, 20, 30, 40]);
 });
 
-// it.only('rx on decorator (subscribe after emit)', () => {
-// 	const numbers = [];
-// 	class TestClass {
-// 		@RxOn('ADD_AN_NUMBER') value: Observable<number>;
-// 	};
-// 	const testObject = new TestClass();
-// 	Observable.from([1, 2, 3, 4])
-// 		.map(x => x * 10)
-// 		.toRxEmitter('ADD_AN_NUMBER');
-// 	testObject.value.subscribe(x => {
-// 		numbers.push(x);
-// 		if (numbers.length === 4) {
-// 			assert.deepStrictEqual(numbers, [10, 20, 30, 40]);
-// 		}
-// 	});
-// });
+it('rx on decorator (subscribe after emit)', () => {
+	const numbers = [];
+	class TestClass {
+		@RxOn('ADD_AN_NUMBER') value: Observable<number>;
+	};
+	const testObject = new TestClass();
+	Observable.from([1, 2, 3, 4])
+		.map(x => x * 10)
+		.toRxEmitter('ADD_AN_NUMBER');
+	testObject.value.subscribe(x => {
+		numbers.push(x);
+		if (numbers.length === 4) {
+			assert.deepStrictEqual(numbers, [10, 20, 30, 40]);
+		}
+	});
+});
+
+it('emit on', () => {
+	RxEmitter.emit('EVENT', 'foo');
+	let fail = true;
+	RxEmitter.on('EVENT').subscribe(x => {
+		fail = false;
+	});
+	fail && assert.fail('Failed');
+});
