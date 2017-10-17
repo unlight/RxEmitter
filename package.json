@@ -1,6 +1,6 @@
 {
   "name": "rxemitter2",
-  "version": "0.2.8-a",
+  "version": "0.2.8-b",
   "description": "rxemitter = rxjs + eventbus",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/unlight/RxEmitter.git"
   },
-  "author": "a-jie",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/unlight/RxEmitter/issues"
   },
