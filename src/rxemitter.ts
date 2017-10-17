@@ -20,12 +20,15 @@ export class RxEmitter {
     static cache: any = {};
 
     static on<T>(eventName: string, target?: any): Observable<T> {
+        const exists = this.has(eventName);
         this.createChache<T>(eventName);
-
         if (target !== undefined) {
             this.cache[eventName].targets.push(target);
         }
-
+        if (!exists) {
+            const subject = this.cache[eventName].subject as Observable<any>;
+            return subject.skip(1);
+        }
         return this.cache[eventName].subject;
     }
 
@@ -35,15 +38,8 @@ export class RxEmitter {
 
     static emit<T>(eventName: string, ...rest: T[]): string {
         this.createChache<T>(eventName);
-
         const value = (rest.length === 1) ? rest[0] : rest;
-
-        if (this.cache[eventName].subject.observers.length === 0) {
-            this.cache[eventName].subject = new BehaviorSubject(value);
-        } else {
-            this.cache[eventName].subject.next(value);
-        }
-
+        this.cache[eventName].subject.next(value);
         return this.cache[eventName].target;
     }
 
@@ -125,7 +121,7 @@ export class RxEmitter {
             this.cache[eventName].id = guid();
             this.cache[eventName].targets = [];
             this.cache[eventName].eventName = eventName;
-            this.cache[eventName].subject = new Subject();
+            this.cache[eventName].subject = new BehaviorSubject(undefined);
         }
 
         return this.cache[eventName];
