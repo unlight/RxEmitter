@@ -1,6 +1,6 @@
 {
   "name": "rxemitter2",
-  "version": "0.2.8",
+  "version": "0.2.8-a",
   "description": "rxemitter = rxjs + eventbus",
   "main": "index.js",
   "scripts": {
@@ -21,23 +21,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-jie/RxEmitter.git"
+    "url": "git+https://github.com/unlight/RxEmitter.git"
   },
   "author": "a-jie",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/a-jie/RxEmitter/issues"
+    "url": "https://github.com/unlight/RxEmitter/issues"
   },
-  "homepage": "https://github.com/a-jie/RxEmitter#readme",
+  "homepage": "https://github.com/unlight/RxEmitter",
   "devDependencies": {
     "@types/mocha": "^2.2.43",
-    "@types/node": "^8.0.34",
+    "@types/node": "^8.0.44",
     "mocha": "^4.0.1",
-    "npm-run-all": "^4.0.2",
-    "rxjs": "^5.2.0",
+    "npm-run-all": "^4.1.1",
+    "rxjs": "^5.4.3",
     "shx": "^0.2.2",
     "ts-node": "^3.3.0",
-    "tslint": "^5.2.0",
-    "typescript": "^2.3.2"
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3"
   }
 }
