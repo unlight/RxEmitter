@@ -1,6 +1,6 @@
 {
   "name": "rxemitter",
-  "version": "0.2.8",
+  "version": "0.2.8-a",
   "description": "rxemitter = rxjs + eventbus",
   "main": "index.js",
   "scripts": {

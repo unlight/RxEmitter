@@ -26,14 +26,13 @@ export class RxEmitter {
             this.cache[eventName].targets.push(target);
         }
         if (!exists) {
-            const subject = this.cache[eventName].subject as Observable<any>;
-            return subject.skip(1);
+            return this.cache[eventName].subject.skip(1);
         }
         return this.cache[eventName].subject;
     }
 
     static one<T>(eventName: string, target?: any): Observable<T> {
-        return this.on(eventName, target).take(1);
+        return this.on<T>(eventName, target).take(1);
     }
 
     static emit<T>(eventName: string, ...rest: T[]): string {
