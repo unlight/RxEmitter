@@ -1,12 +1,15 @@
 ![logo](https://github.com/a-jie/RxEmitter/blob/master/logo/logo.png?raw=true)
 
-# RxEmitter
+# RxEmitter2
 
 ### RxEmitter = Rxjs + eventBus.  
 RxEmitter combines the characteristics of Rxjs and eventBus.Emit a Stream of similar events, and you can accept it in any where.  
 Use RxEmitter to make your project easy to decouple.
 It can be used for angular,React,Vue and so on.
 
+### Differences from [a-jie/RxEmitter](https://github.com/a-jie/RxEmitter)
+rxemitter2 uses `BehaviorSubject` instead of `Subject`,
+this allows subscribe to get value before value will be emitted.
 
 ## Installation and Usage
 
@@ -14,13 +17,13 @@ It can be used for angular,React,Vue and so on.
 
 ##### Installation
 ```sh
-npm install rxemitter
+npm install rxemitter2
 ```
 
 ##### emit
 
 ```js
-import { RxEmitter, toRxEmitter, rxEmit } from 'rxemitter';
+import { RxEmitter, toRxEmitter, rxEmit } from 'rxemitter2';
 ...
 
 /** emit */
@@ -42,7 +45,7 @@ RxEmitter.emit("EVENT_NAME",{a:1,b:2});
 ##### on
 
 ```js
-import { RxEmitter } from 'rxemitter';
+import { RxEmitter } from 'rxemitter2';
 ...
 
 /** on */
@@ -155,7 +158,7 @@ RxEmitter.offAllByTarget(this);
 ## Used in the angular
 
 ```js
-import { RxOn } from 'rxemitter';
+import { RxOn } from 'rxemitter2';
 //
 @RxOn("DATA_LOADED")
 items$: Observable<Item[]>;
