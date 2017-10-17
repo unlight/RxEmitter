@@ -5,7 +5,6 @@ var path = require('path');
 delete pkg.scripts;
 
 var cjsPkg = Object.assign({}, pkg, {
-    name: 'rxemitter',
     main: 'index.js',
     typings: 'index.d.ts'
 });
