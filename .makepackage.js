@@ -11,3 +11,4 @@ var cjsPkg = Object.assign({}, pkg, {
 
 fs.writeFileSync('dist/cjs/package.json', JSON.stringify(cjsPkg, null, 2));
 fs.writeFileSync('dist/cjs/README.md', fs.readFileSync('./README.md').toString());
+fs.writeFileSync('dist/cjs/LICENSE', fs.readFileSync('./LICENSE').toString());
